@@ -1,57 +1,82 @@
-sender = "support@school-security.example"
+emails = [
+    {
+        "name": "EMAIL A",
+        "subject": "Your account will expire today",
+        "body": """
+Your account is scheduled for suspension.
+Click here to verify your account immediately.
+"""
+    },
+    {
+        "name": "EMAIL B",
+        "subject": "ITE 403 Week 5 Submission",
+        "body": """
+Hi Alvin,
 
-subject = "URGENT: Account Verification Required"
-
-email_body = """ Dear Student,
-
-Your school account requires verification.
-Please click the link below and enter your password immediately.
-Your account may be suspended if you do not verify it.
+I'm checking the submissions for ITE 403.
+Your Week 5 activity appears to be missing.
+Please review your submission before 3 PM.
 
 Thank you,
-School Security Team """
+Dr. Santos
+"""
+    },
+    {
+        "name": "EMAIL C",
+        "subject": "Congratulations! You Won!",
+        "body": """
+You have won ₱50,000.
+Send your account information to claim your prize.
+"""
+    }
+]
 
 suspicious_words = [
     "urgent",
-    "verify", 
+    "verify",
     "password",
     "click",
-    "suspend",
-    "immediately",
+    "suspended",
+    "immediately"
 ]
 
-print("PHISHING EMAIL DETECTOR")
-print()
-print("sender:")
-print(sender) 
-print()
-print("subject:")
-print()
-print("Message:")
-print(email_body)
-
-print("SUSPICIOS INDICATORS")
-print()
-
-email_text = email_body.lower()
-
-score = 0
-
-for word in suspicious_words:
-    if word in email_text:
-        print("[!]"  + word)
-        score += 1
-
-if score <= 1:
-    risk_level = "LOW"
-elif score <=3:
-    risk_level = "MEDIUM"
-else:
-    risk_level = "HIGH"
-
-print("RISK SCORE" , score)
-print("RISK LEVEL" , risk_level)
 
 
+for email in emails:
+
+    print("=" * 40)
+    print(email["name"])
+    print("=" * 40)
+
+    print("Subject:")
+    print(email["subject"])
+
+    print("\nMessage:")
+    print(email["body"])
+
+    print("SUSPICIOUS INDICATORS")
+    print()
+
+    email_text = (
+        email["subject"] + " " + email["body"]
+    ).lower()
+
+    score = 0
+
+    for word in suspicious_words:
+        if word in email_text:
+            print("[!] " + word)
+            score += 1
 
 
+    if score <= 1:
+        risk_level = "LOW"
+    elif score <= 3:
+        risk_level = "MEDIUM"
+    else:
+        risk_level = "HIGH"
+
+    print()
+    print("RISK SCORE:", score)
+    print("RISK LEVEL:", risk_level)
+    print()
