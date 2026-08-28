@@ -28,13 +28,24 @@ YOUR TASK
 Identify:
 
 1. Who is the target?
+    => Alvin Araneta
 2. Who is the supposed sender?
+    => support@school-security.example
 3. What is the attacker asking for?
+    => Username and Password for verification.
 4. What creates urgency?
+    => the subject of the mail
 5. What information makes the message convincing?
+    => "Your account will be suspended today unless you verify your account
+        immediately."
 6. What could the attacker gain?
+    => Username and Password
 7. Identify at least five red flags.
-
+    => 1 the sender specifically said that account will be suspended today.
+       2 the link is kinda suspicious
+       3 entering bare username and password to continue
+       4 no reason why the account is in risk or proof of unusual activuty to see.
+       5 immediately sound so desperate
 OUTPUT:
 Write your answers in:
 missions/mission_01.md
