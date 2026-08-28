@@ -10,6 +10,15 @@ Please verify your account to avoid interruption of access.
 Thank you,
 School Security Team """
 
+suspicious_words = [
+    "urgent",
+    "verify", 
+    "password",
+    "click",
+    "suspend",
+    "immediately",
+]
+
 print("PHISHING EMAIL DETECTOR")
 print()
 print("sender:")
@@ -19,3 +28,12 @@ print("subject:")
 print()
 print("Message:")
 print(email_body)
+
+print("SUSPICIOS INDICATORS")
+print()
+
+email_text = email_body.lower()
+
+for word in suspicious_words:
+    if word in email_text:
+        print("[!]"  + word)
